@@ -21,8 +21,13 @@ ggplot(data = nfhs) +
 nfhs <- mutate(nfhs, urban = hv025 == 1)
 #Add variable urban
 
-ggplot(data = nfhs, mapping = aes(x = hv009, y = urban)) + 
-  geom_boxplot()
+urban_for_box <- nfhs %>%
+  filter(hv025 == 1)
+
+ggplot(data = urban_for_box, mapping = aes(x = hv009, y = factor(hv026))) + 
+  geom_boxplot() +
+  xlab('Household Distribution') +
+  ylab('Type of Urban Area')
 #Make a histogram, true = urban, false = rural
 
 summarise(nfhs)
