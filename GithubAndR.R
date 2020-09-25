@@ -26,3 +26,12 @@ ggplot(data = nfhs, mapping = aes(x = hv009, y = urban)) +
 
 summarise(nfhs)
 
+by_city_size <- group_by(nfhs, hv025, hv026)
+#Made a new variable so that you can compare data, name says it all
+
+summarise(by_city_size, average_family_size = mean(hv009, na.rm = TRUE))
+#This is the answer to the first part of the question. 
+
+summarise(by_city_size, average_family_size = median(hv009, na.rm = TRUE))
+#This is the answer to the extended response this make sense because if you look at the first graph
+#You can see that the data is most distributed at the beginning with few outliers
